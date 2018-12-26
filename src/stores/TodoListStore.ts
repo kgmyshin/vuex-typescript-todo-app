@@ -59,7 +59,7 @@ const mutations: DefineMutations<ITodoListMutations, ITodoListState> = {
     state.todos.push(todo)
   },
   remove (state, { todo }) {
-    state.todos = state.todos.filter(item => {item.id !== todo.id})
+    state.todos = state.todos.filter(item => { return item.id !== todo.id })
   }
 }
 

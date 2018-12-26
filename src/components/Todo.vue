@@ -6,6 +6,7 @@
     @click="hasDone ? undone() : done()"
     > 
     {{ todo.body }}
+    <button @click="remove">削除</button>
   </div>
 </template>
 
@@ -25,7 +26,7 @@ export default class TodoVue extends Vue {
       ...mapGetters(["hasDone"])
     }
     this.$options.methods = {
-      ...mapActions(["done", "undone"])
+      ...mapActions(["done", "undone", "remove"])
     }
   }
 }

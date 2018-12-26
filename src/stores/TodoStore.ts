@@ -21,6 +21,8 @@ export interface ITodoActions {
   done: {
   },
   undone: {
+  },
+  remove: {
   }
 }
 
@@ -52,6 +54,9 @@ const actions: DefineActions<ITodoActions, ITodoState, ITodoMutations, ITodoGett
   },
   undone (context, payload) {
     context.commit('undone', payload)
+  },
+  remove (context, _) {
+    context.commit("todos/remove", {todo: context.state.todo}, { root: true })
   }
 }
 
