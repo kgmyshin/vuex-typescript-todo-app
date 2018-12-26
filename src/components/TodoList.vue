@@ -21,7 +21,6 @@ import { ITodoListState } from '@/stores/TodoListStore';
   }
 })
 export default class TodoListVue extends Vue {
-  namedspace!: string
   beforeCreate() {
     let { mapState } = createNamespacedHelpers("todos")
     this.$options.computed = {
