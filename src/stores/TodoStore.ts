@@ -48,11 +48,9 @@ const mutations: DefineMutations<ITodoMutations, ITodoState> = {
 
 const actions: DefineActions<ITodoActions, ITodoState, ITodoMutations, ITodoGetters> = {
   done (context, payload) {
-    console.log("done")
     context.commit('done', payload);
   },
   undone (context, payload) {
-    console.log("undone")
     context.commit('undone', payload)
   }
 }
