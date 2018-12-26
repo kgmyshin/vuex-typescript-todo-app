@@ -4,19 +4,8 @@ import { createTodoListModule } from './stores/TodoListStore';
 
 Vue.use(Vuex);
 
-let store = new Vuex.Store({
-  state: {
+const store = new Vuex.Store({});
 
-  },
-  mutations: {
+store.registerModule('todos', createTodoListModule(store));
 
-  },
-  actions: {
-
-  },
-  modules: {}
-});
-
-store.registerModule("todos", createTodoListModule(store))
-
-export default store
+export default store;

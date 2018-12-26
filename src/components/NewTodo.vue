@@ -11,18 +11,18 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { createNamespacedHelpers, mapState, mapActions } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 
 @Component
-export default class NewTodoVue extends Vue {
-  beforeCreate() {
-    let { mapState, mapActions } = createNamespacedHelpers("todos/new")
+export default class NewTodo extends Vue {
+  public beforeCreate() {
+    const { mapState, mapActions } = createNamespacedHelpers('todos/new');
     this.$options.computed = {
-      ...mapState(["body"])
-    }
+      ...mapState(['body']),
+    };
     this.$options.methods = {
-      ...mapActions(["submit", "update"])
-    }
+      ...mapActions(['submit', 'update']),
+    };
   }
 }
 </script>

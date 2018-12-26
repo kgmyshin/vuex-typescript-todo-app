@@ -1,76 +1,71 @@
-import * as Vuex from 'vuex'
-import { DefineGetters, DefineMutations, DefineActions, Dispatcher, Committer } from 'vuex-type-helper'
+import * as Vuex from 'vuex';
+import { DefineGetters, DefineMutations, DefineActions, Dispatcher, Committer } from 'vuex-type-helper';
 import { Todo } from '@/models/Todo';
 
 export interface ITodoState {
-  todo: Todo
+  todo: Todo;
 }
 
 export interface ITodoGetters {
-  hasDone: boolean
+  hasDone: boolean;
 }
 
 export interface ITodoMutations {
-  done: {
-  },
-  undone: {
-  }
+  done: {};
+  undone: {};
 }
 
 export interface ITodoActions {
-  done: {
-  },
-  undone: {
-  },
-  remove: {
-  }
+  done: {};
+  undone: {};
+  remove: {};
 }
 
 class TodoState implements ITodoState {
-  todo: Todo;
+  public todo: Todo;
   constructor(todo: Todo) {
-    this.todo = todo
+    this.todo = todo;
   }
 }
 
 const getters: DefineGetters<ITodoGetters, ITodoState> = {
-  hasDone (state) {
-    return state.todo.hasDone
-  }
-}
+  hasDone(state) {
+    return state.todo.hasDone;
+  },
+};
 
 const mutations: DefineMutations<ITodoMutations, ITodoState> = {
-  done (state, _) {
+  done(state, _) {
     state.todo.hasDone = true;
   },
-  undone (state, _) {
+  undone(state, _) {
     state.todo.hasDone = false;
-  }
-}
+  },
+};
 
 const actions: DefineActions<ITodoActions, ITodoState, ITodoMutations, ITodoGetters> = {
-  done (context, payload) {
+  done(context, payload) {
     context.commit('done', payload);
   },
-  undone (context, payload) {
-    context.commit('undone', payload)
+  undone(context, payload) {
+    context.commit('undone', payload);
   },
-  remove (context, _) {
-    context.commit("todos/remove", {todo: context.state.todo}, { root: true })
-  }
-}
+  remove(context, _) {
+    context.commit('todos/remove', {todo: context.state.todo}, { root: true });
+  },
+};
 
 export class TodoModule implements Vuex.Module<ITodoState, any> {
-  state: ITodoState
-  namespaced = true
-  getters = getters
-  mutations = mutations
-  actions = actions
+  public state: ITodoState;
+  public namespaced = true;
+  public getters = getters;
+  public mutations = mutations;
+  public actions = actions;
   constructor(todo: Todo) {
-    this.state = new TodoState(todo)
+    this.state = new TodoState(todo);
   }
 }
 
 export const createTodoModule = (todo: Todo) => {
-  return new TodoModule(todo)
-}
+  return new TodoModule(todo);
+};

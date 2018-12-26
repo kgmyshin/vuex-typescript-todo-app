@@ -1,14 +1,14 @@
 export class Todo {
-  public id: string
-  public body: string
-  public hasDone: boolean
+  public id: string;
+  public body: string;
+  public hasDone: boolean;
   constructor(
     id: string,
     body: string,
-    hasDone: boolean = false
+    hasDone: boolean = false,
   ) {
-    this.id = id
-    this.body = body
-    this.hasDone = hasDone
+    this.id = id;
+    this.body = body;
+    this.hasDone = hasDone;
   }
 }

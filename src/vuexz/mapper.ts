@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 export var createNamespacedFnHelpers = function (namespaceFn: () => string) { return ({
   mapState: mapState.bind(null, namespaceFn),
   mapGetters: mapGetters.bind(null, namespaceFn),
