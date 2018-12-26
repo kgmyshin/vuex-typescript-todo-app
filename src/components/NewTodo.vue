@@ -3,6 +3,7 @@
     <input
       type="text"
       :value="body"
+      @input="update"
       v-on:keyup.enter="submit"
       >
   </div>
@@ -20,7 +21,7 @@ export default class NewTodoVue extends Vue {
       ...mapState(["body"])
     }
     this.$options.methods = {
-      ...mapActions(["submit"])
+      ...mapActions(["submit", "update"])
     }
   }
 }
