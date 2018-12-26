@@ -13,7 +13,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Todo } from '@/models/Todo';
 import { ITodoState, ITodoGetters } from '@/stores/TodoStore';
-import { createNamespacedFnHelpers } from '@/utils/mapper'
+import { createNamespacedFnHelpers } from '@/vuexz/mapper'
 
 @Component
 export default class TodoVue extends Vue {
