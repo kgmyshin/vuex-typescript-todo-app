@@ -3,6 +3,7 @@ import { DefineGetters, DefineMutations, DefineActions } from 'vuex-type-helper'
 import { Todo } from '@/models/Todo';
 import { createTodoModule } from './TodoStore';
 import uuid from 'uuid';
+import { createNewTodoModule } from './NewTodoStore';
 
 export interface ITodoListState {
   todos: Todo[]
@@ -54,8 +55,9 @@ const getters: DefineGetters<ITodoListGetters, ITodoListState> = {
 
 const mutations: DefineMutations<ITodoListMutations, ITodoListState> = {
   add (state, { todo }) {
-    state.todos.push(todo)
+    console.log(todo)
     modules[todo.id] = createTodoModule(todo)
+    state.todos.push(todo)
   },
   remove (state, { todo }) {
     state.todos = state.todos.filter(item => {item.id !== todo.id})
@@ -72,7 +74,10 @@ const actions: DefineActions<ITodoListActions, ITodoListState, ITodoListMutation
   }
 }
 
-const modules: { [key: string]: Vuex.Module<any, any>; } = {}
+var modules: { [key: string]: Vuex.Module<any, any>; } = {
+}
+
+modules["new"] = createNewTodoModule()
 
 state.todos.forEach(todo => {
   modules[todo.id] = createTodoModule(todo)
